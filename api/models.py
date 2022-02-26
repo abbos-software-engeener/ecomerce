@@ -44,4 +44,8 @@ class Card(models.Model):
         self.total = ((self.product.price * self.coupon)/100) * self.product.price
         return super(Card, self).save(*args, **kwargs)
 
+
+class Order(models.Model):
+    products = models.ManyToManyField(Product)
+    
     
