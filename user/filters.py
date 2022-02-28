@@ -11,5 +11,5 @@ class UserSearchFilter(filters.FilterSet):
         fields = ['q']
 
     def q_filter(self, queryset, name, value):
-        return queryset.filter(Q(username__istartswith=value) | Q(first_name__istartswith=value) |
+        return queryset.filter(Q(email__istartswith=value) | Q(first_name__istartswith=value) |
                                Q(last_name__istartswith=value))

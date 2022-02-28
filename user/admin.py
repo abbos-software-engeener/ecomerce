@@ -2,46 +2,16 @@ from django.contrib import admin
 from .models import User
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.forms import UserChangeForm
+# from django.contrib.auth.forms import UserChangeForm
 
 
-class CustomUserChangeForm(UserChangeForm):
-    class Meta(UserChangeForm.Meta):
-        model = User
 
-
-class CustomUserAdmin(UserAdmin):
-    form = CustomUserChangeForm
-
+class UserAdmin(UserAdmin):
+    model = User
+    list_display = ('phone', 'is_staff', 'is_active')
+    list_filter = ('phone', 'is_staff', 'is_active')
     fieldsets = (
-        (None, {"fields": ("username", "password")}),
-        (
-            _("Personal info"),
-            {
-                "fields": (
-                    "first_name",
-                    "last_name",
-                    "email",
-                    "profile_image",
-                    "phone_number",
-                )
-            },
-        ),
-        (
-            _("Permissions"),
-            {
-                "fields": (
-                    "is_active",
-                    "is_staff",
-                    "is_superuser",
-                    "groups",
-                    "user_permissions",
-                ),
-            },
-        ),
+        (None, {'fields':('phone', 'password')}),
+        ("Permissions", {'fields':('is_staff', "is_active")})
     )
-
-
-@admin.register(User)
-class CustomUserAdmin(CustomUserAdmin):
-    pass
+admin.site.register(User)

@@ -21,11 +21,8 @@ from rest_framework import permissions
 #     permission_classes=(permissions.AllowAny,),
 # )
 
+
 urlpatterns = [
-
-]
-
-urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('api/user/', include('user.urls')),
     # path('api/', include('api.urls', namespace='api')),
@@ -36,7 +33,7 @@ urlpatterns += i18n_patterns(
     # path('redoc/', schema_view.with_ui(
     #     'redoc', cache_timeout=0), name='schema-redoc-ui'
     #      ),
-)
+]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
