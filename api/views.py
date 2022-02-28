@@ -319,7 +319,8 @@ class OrderView(APIView):
     def post(self, request):
         serializer = self.SERIALIZER(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(user=self.request.user)
+
             return ResponseSuccess(serializer.data)
         else:
             return ResponseFail(serializer.errors)

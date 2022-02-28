@@ -31,7 +31,6 @@ class Product(models.Model):
         self.total = self.price * self.count
         return super(Product, self).save(*args, **kwargs)
 
-
     class Meta:
         verbose_name = 'kategoriya'
         verbose_name_plural = 'kategoriyalar'
