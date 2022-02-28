@@ -17,8 +17,8 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=100, default='familiyangizni kiriting kiriting')
     email = models.EmailField()
     message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         fullname = f"{self.first_name}  {self.last_name}"
         return fullname
-
